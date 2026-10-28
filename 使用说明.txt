@@ -1,0 +1,36 @@
+PNG 压缩工具 — 使用说明
+========================
+
+双击「PNG压缩器.exe」或桌面快捷方式「PNG压缩器」启动。
+请保持本文件夹内的 _internal、bin 与 EXE 在同一目录，不要拆开。
+
+工作模式
+--------
+1) 三方案对比（推荐）
+   - 选择含 PNG 的文件夹后点「开始处理」
+   - 不会覆盖原图
+   - 在同级目录生成「文件夹名_对比」，内含：
+       oxipng\     纯 oxipng 无损结果
+       pngquant\   纯 pngquant 有损结果
+       pngdeer\    纯 pngdeer 结果（若 bin 中有 pngdeer.exe）
+       对比结果.csv / 对比结果.txt
+   - 界面表格会显示各方案体积与「体积最小方案」
+
+2) 单方案原位替换
+   - 只选一个引擎：oxipng / pngquant / pngdeer
+   - 仅在压缩后更小时覆盖原文件
+   - 不会自动备份，请先自行备份
+
+引擎说明（互不串联）
+--------------------
+- oxipng：无损重打包（-o 4 --strip safe），画质不变
+- pngquant：有损减色（默认 --quality=80-95 --nofs；失败再试 65-90）
+- pngdeer：感知质量自动搜调色板（用法：pngdeer in.png -o out.png）
+
+注意：有损不一定比无损更小；不同图赢家可能不同，请用对比模式看结果。
+
+依赖文件
+--------
+bin\oxipng.exe
+bin\pngquant.exe
+bin\pngdeer.exe   （可选；没有则对比只跑前两个）
